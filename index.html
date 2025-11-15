@@ -233,6 +233,124 @@ git log
                     </ul>
                 </div>
             </div>
+            <!-- الدرس الثاني -->
+            <div class="lesson-card" onclick="toggleLesson('lesson2')">
+                <span class="lesson-number">الدرس 2</span>
+                <h2 class="lesson-title">التعاون في المشاريع (Collaboration)</h2>
+                <p class="lesson-description">كيفية العمل مع فريق على نفس المشروع باستخدام Git و GitHub</p>
+                
+                <div id="lesson2" class="lesson-content">
+                    <h3>ما هو التعاون في Git؟</h3>
+                    <p>التعاون يعني العمل مع أشخاص آخرين على نفس المشروع البرمجي، حيث يمكن لكل شخص المساهمة بتغييراته.</p>
+                    
+                    <h3>أساسيات التعاون:</h3>
+                    
+                    <h4>1. الفروع (Branches)</h4>
+                    <p>الفروع تسمح لك بالعمل على ميزات جديدة دون التأثير على الكود الأساسي.</p>
+                    <div class="code-block">
+<span class="comment"># إنشاء فرع جديد</span>
+git branch <span class="command">feature-name</span>
+
+<span class="comment"># الانتقال إلى الفرع</span>
+git checkout <span class="command">feature-name</span>
+
+<span class="comment"># إنشاء والانتقال في خطوة واحدة</span>
+git checkout -b <span class="command">feature-name</span>
+
+<span class="comment"># عرض جميع الفروع</span>
+git branch
+                    </div>
+
+                    <h4>2. دمج التغييرات (Merge)</h4>
+                    <div class="code-block">
+<span class="comment"># الانتقال إلى الفرع الرئيسي</span>
+git checkout main
+
+<span class="comment"># دمج الفرع الجديد مع الرئيسي</span>
+git merge <span class="command">feature-name</span>
+                    </div>
+
+                    <h4>3. Pull Requests</h4>
+                    <p>طلب دمج (Pull Request) هو طريقة لمراجعة الكود قبل دمجه:</p>
+                    <ul>
+                        <li>ارفع فرعك إلى GitHub: <span class="highlight">git push origin feature-name</span></li>
+                        <li>اذهب إلى صفحة المستودع على GitHub</li>
+                        <li>اضغط على "New Pull Request"</li>
+                        <li>اختر الفروع المراد دمجها</li>
+                        <li>أضف وصفاً للتغييرات واطلب المراجعة</li>
+                    </ul>
+
+                    <h4>4. حل التعارضات (Conflicts)</h4>
+                    <p>عندما يعدل شخصان نفس السطر في ملف، يحدث تعارض:</p>
+                    <div class="code-block">
+<span class="comment"># سحب التحديثات</span>
+git pull origin main
+
+<span class="comment"># إذا حدث تعارض، افتح الملف وعدله يدوياً</span>
+<span class="comment"># ثم أضف الملف بعد التعديل</span>
+git add <span class="command">filename.txt</span>
+
+<span class="comment"># أكمل عملية الدمج</span>
+git commit -m <span class="command">"resolved conflicts"</span>
+                    </div>
+
+                    <h4>5. Fork والمساهمة</h4>
+                    <p>للمساهمة في مشاريع الآخرين:</p>
+                    <ul>
+                        <li>اعمل Fork للمستودع على GitHub</li>
+                        <li>استنسخ النسخة الخاصة بك</li>
+                        <li>أنشئ فرع جديد للتعديلات</li>
+                        <li>ارفع تغييراتك</li>
+                        <li>أنشئ Pull Request للمستودع الأصلي</li>
+                    </ul>
+
+                    <h3>أفضل الممارسات:</h3>
+                    <ul>
+                        <li>اسحب التحديثات بانتظام لتجنب التعارضات</li>
+                        <li>استخدم فروعاً منفصلة لكل ميزة جديدة</li>
+                        <li>اكتب رسائل commit واضحة ومفصلة</li>
+                        <li>راجع الكود قبل دمجه</li>
+                        <li>تواصل مع فريقك باستمرار</li>
+                    </ul>
+
+                    <h3>أدوات مفيدة:</h3>
+                    <div class="code-block">
+<span class="comment"># عرض التغييرات بين الفروع</span>
+git diff <span class="command">branch1 branch2</span>
+
+<span class="comment"># عرض من قام بتعديل كل سطر</span>
+git blame <span class="command">filename.txt</span>
+
+<span class="comment"># حفظ تغييرات مؤقتة</span>
+git stash
+
+<span class="comment"># استرجاع التغييرات المؤقتة</span>
+git stash pop
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 موقع تعليمي للحوسبة | جميع الحقوق محفوظة</p>
+            <p>تعلم Git و GitHub بسهولة</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleLesson(lessonId) {
+            const lesson = document.getElementById(lessonId);
+            const allLessons = document.querySelectorAll('.lesson-content');
+            
+            allLessons.forEach(l => {
+                if (l.id !== lessonId) {
+                    l.classList.remove('active');
+                }
+            });
+            
+            lesson.classList.toggle('active');
+        }
+    </script>
 
         
 
